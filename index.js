@@ -2,6 +2,7 @@ import store from "./redux/index.js";
 import { addScore } from "./redux/score.js";
 import { resetScore } from "./redux/score.js";
 import { reloadScore } from "./redux/score.js";
+// import scoreComponent from "./components/score.js";
 
 const boardTime = document.getElementById('game-time');
 const userScore = document.getElementById('user-score');
