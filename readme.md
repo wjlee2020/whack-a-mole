@@ -29,6 +29,7 @@ How redux works is: <br/>
 
 The gameboard is created with css grid. <br/>
 I created each "mole hole" with a div tag as mentioned in the instructions. <br/>
+Utilizing display: grid with nth-child pseudo class, I was able to create the layout from the instruction with a cleaner code than if I had done it with display: flex which would have led me to create more sub containers in the html.
 
 Basic game play is determined by the timer flag which is initially set to false. <br/>
 When the Start button is clicked, the timer flag will change to true, run two main functions:
