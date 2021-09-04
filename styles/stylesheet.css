@@ -1,0 +1,148 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.game-info-container, .game-box {
+    display: flex;
+    flex-direction: row;
+}
+
+.game-info-container {
+    width: 50%;
+    margin: 15vh auto 0;
+    justify-content: center;
+    gap: 3rem;
+}
+.game-box {
+    gap: 1rem;
+}
+
+.grid {
+    width: 80%;
+    display: grid;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(6, 50px);
+    grid-template-areas: 
+    ". . two twoa . ."
+    ". four foura fourb fourc ."
+    "sixa sixb sixc sixd sixe sixf"
+    "six2 six2a six2b six2c six2d six2e"
+    ". four2 four2a four2b four2c ."
+    ". . two2 two2a . ."
+    ;
+}
+
+.hole {
+	height: 50px;
+	width: 50px;
+    background-image: url('../images/dirt.png');
+    background-position: bottom;
+    background-size: cover;
+}
+
+.two-hole {
+    grid-area: two;
+}
+.two-holeA {
+    grid-area: twoa;
+}
+.two-hole2 {
+    grid-area: two2;
+}
+.two-hole2A {
+    grid-area: two2a;
+}
+
+.four-hole {
+    grid-area: four;
+}
+.four-holeA {
+    grid-area: foura;
+}
+.four-holeB {
+    grid-area: fourb;
+}
+.four-holeC {
+    grid-area: fourc;
+}
+
+.four-hole2 {
+    grid-area: four2;
+}
+.four-hole2A {
+    grid-area: four2a;
+}
+.four-hole2B {
+    grid-area: four2b;
+}
+.four-hole2C {
+    grid-area: four2c;
+}
+
+.six-holeA {
+    grid-area: sixa;
+}
+.six-holeB {
+    grid-area: sixb;
+}
+.six-holeC {
+    grid-area: sixc;
+}
+.six-holeD {
+    grid-area: sixd;
+}
+.six-holeE {
+    grid-area: sixe;
+}
+.six-holeF {
+    grid-area: sixf;
+}
+
+.six-hole2 {
+    grid-area: six2;
+}
+.six-hole2A {
+    grid-area: six2a;
+}
+.six-hole2B {
+    grid-area: six2b;
+}
+.six-hole2C {
+    grid-area: six2c;
+}
+.six-hole2D {
+    grid-area: six2d;
+}
+.six-hole2E {
+    grid-area: six2e;
+}
+
+
+.mole {
+    background-image: url('../images/mole.png');
+    background-position: center;
+    background-size: cover;
+    animation: moveInBottom 500ms;
+}
+
+@keyframes moveInBottom {
+    0% {
+        transform: translateY(10px);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+button {
+    width: 200px;
+    margin: 5rem auto 0;
+    padding: 1rem 1.7rem;
+    font-size: 1.6rem;
+}

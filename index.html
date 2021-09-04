@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/stylesheet.css">
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+    <title>Whac-a-Mole</title>
+</head>
+
+<body>
+
+    <div class="main-container">
+        <div class="game-info-container">
+            <div class="game-box">
+                <h2>Your score:</h2>
+                <h2 id="user-score">0</h2>
+            </div>
+            <div class="game-box">
+                <h2>Time Left:</h2>
+                <h2 id="game-time">60</h2>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="hole two-hole" id="1"></div>
+            <div class="hole two-holeA" id="2"></div>
+            <div class="hole four-hole" id="3"></div>
+            <div class="hole four-holeA" id="4"></div>
+            <div class="hole four-holeB" id="5"></div>
+            <div class="hole four-holeC" id="6"></div>
+            <div class="hole six-holeA" id="7"></div>
+            <div class="hole six-holeB" id="8"></div>
+            <div class="hole six-holeC" id="9"></div>
+            <div class="hole six-holeD" id="10"></div>
+            <div class="hole six-holeE" id="11"></div>
+            <div class="hole six-holeF" id="12"></div>
+            <div class="hole six-hole2" id="13"></div>
+            <div class="hole six-hole2A" id="14"></div>
+            <div class="hole six-hole2B" id="15"></div>
+            <div class="hole six-hole2C" id="16"></div>
+            <div class="hole six-hole2D" id="17"></div>
+            <div class="hole six-hole2E" id="18"></div>
+            <div class="hole four-hole2" id="19"></div>
+            <div class="hole four-hole2A" id="20"></div>
+            <div class="hole four-hole2B" id="21"></div>
+            <div class="hole four-hole2C" id="22"></div>
+            <div class="hole two-hole2" id="23"></div>
+            <div class="hole two-hole2A" id="24"></div>
+        </div>
+
+        <button id="start-btn">Start</button>
+    </div>
+
+    <script type="module" src="index.js"></script>
+    <script type="module" src="redux/index.js"></script>
+</body>
+
+</html>
