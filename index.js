@@ -17,6 +17,16 @@ let playClock = 10;
 let countFlg = 0;
 let moleTime = 1000;
 
+const checkCurrentUserScore = () => {
+    if (localStorage.getItem('currentScore')) {
+        userScore.textContent = localStorage.getItem('currentScore');
+    } else {
+        userScore.textContent = 0;
+    }
+}
+
+checkCurrentUserScore();
+
 const randomMoleHole = () => {
     holes.forEach(hole => {
         if (hole.classList.contains('mole')) {
@@ -36,9 +46,6 @@ const randomMoleHole = () => {
 }
 
 const getPointsPerMole = () => {
-    // if(localStorage.getItem('currentScore')) {
-    //     userScore.textContent = 
-    // }
     holes.forEach(hole => {
         hole.addEventListener('click', () => {
             if (hole.classList.contains('mole') && timer) {
