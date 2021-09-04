@@ -1,6 +1,7 @@
 import store from "./redux/index.js";
 import { addScore } from "./redux/score.js";
 import { resetScore } from "./redux/score.js";
+import { reloadScore } from "./redux/score.js";
 
 const boardTime = document.getElementById('game-time');
 const userScore = document.getElementById('user-score');
@@ -72,7 +73,7 @@ const randomMoleHole = () => {
 
 // reset all variables related to game;
 const resetGame = () => {
-    alert(`Game Over! Your score is ${store.getState().score}`)
+    alert(`Game Over! Your score is ${localStorage.getItem('currentScore')}`)
     // decide to keep high scores or not (this case, clear storage, no high scores)
     timer = false;
     localStorage.clear();
@@ -104,9 +105,8 @@ const countDownGameClock = () => {
 
 const countDownPersistence = seconds => {
     seconds = localStorage.getItem('seconds') || seconds;
-
-    if (timer) {
-        function tick() {
+    function tick() {
+        if (timer) {
             seconds--;
             localStorage.setItem('seconds', seconds);
             boardTime.textContent = seconds;
@@ -116,16 +116,22 @@ const countDownPersistence = seconds => {
                 resetGame();
             }
         }
-        tick();
     }
+    tick();
+
 }
 
 // refreshed
 window.onload = function () {
-    startStopBtn.innerText = 'Stop';
-    countDownPersistence(playClock);
-    moleGameStart();
-    playClock = localStorage.getItem('playClock');
+    startStopBtn.innerText = 'Start';
+    store.dispatch(reloadScore());
+    console.log(store.getState().score || 0)
+    // countDownPersistence(playClock);
+    // moleGameStart();
+    playClock = localStorage.getItem('playClock') || 'resume';
+    if (isNaN(playClock)) {
+        playClock = 10;
+    }
     boardTime.textContent = playClock;
     if (playClock === 0) {
         resetGame();
