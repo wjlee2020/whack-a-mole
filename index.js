@@ -18,7 +18,7 @@ let countFlg = 0;
 let moleTime = 1000;
 
 
-// for creating high scores (added feature, if wanted in the future)
+// for creating high scores (potential new feature, if wanted in the future)
 const checkCurrentUserScore = () => {
     if (localStorage.getItem('currentScore')) {
         userScore.textContent = localStorage.getItem('currentScore');
@@ -89,20 +89,21 @@ const resetGame = () => {
 }
 
 // countdown the play clock, resetGame when it reaches 0
-const countDownGameClock = () => {
-    playClock--;
-    if (localStorage.getItem('playClock')) {
-        playClock = localStorage.getItem('playClock');
-    } else {
+// const countDownGameClock = () => {
+//     playClock--;
+//     if (localStorage.getItem('playClock')) {
+//         playClock = localStorage.getItem('playClock');
+//     } else {
 
-        localStorage.setItem('playClock', playClock);
-    }
-    boardTime.textContent = playClock;
-    if (playClock === 0) {
-        resetGame();
-    }
-}
+//         localStorage.setItem('playClock', playClock);
+//     }
+//     boardTime.textContent = playClock;
+//     if (playClock === 0) {
+//         resetGame();
+//     }
+// }
 
+// countdown game clock which is persisted via localStorage
 const countDownPersistence = seconds => {
     seconds = localStorage.getItem('seconds') || seconds;
     function tick() {
@@ -121,7 +122,7 @@ const countDownPersistence = seconds => {
 
 }
 
-// refreshed
+// on window refresh
 window.onload = function () {
     startStopBtn.innerText = 'Start';
     store.dispatch(reloadScore());
@@ -152,7 +153,5 @@ const moleGameStart = () => {
         startStopBtn.innerText = 'Start'
     }
 }
-
-console.log(timer);
 
 startStopBtn.addEventListener('click', moleGameStart);
