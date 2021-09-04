@@ -1,3 +1,6 @@
+import store from "./redux/index.js";
+import { addScore } from "./redux/score.js";
+
 const boardTime = document.getElementById('game-time');
 const userScore = document.getElementById('user-score');
 const holes = document.querySelectorAll('.hole');
@@ -5,8 +8,7 @@ const mole = document.querySelector('.mole');
 const startStopBtn = document.getElementById('start-btn');
 
 let timer = null;
-let highScore;
-let currentScore = 0;
+// let highScore;
 let randHoleId;
 let numOfMoles = 5;
 
@@ -34,11 +36,16 @@ const randomMoleHole = () => {
 }
 
 const getPointsPerMole = () => {
+    // if(localStorage.getItem('currentScore')) {
+    //     userScore.textContent = 
+    // }
     holes.forEach(hole => {
         hole.addEventListener('click', () => {
             if (hole.classList.contains('mole') && timer) {
-                currentScore++;
-                userScore.textContent = currentScore;
+                store.dispatch(addScore(1));
+                let stateScore = store.getState().score;
+                userScore.textContent = stateScore
+                localStorage.setItem('currentScore', stateScore)
                 hole.classList.remove('mole')
             }
         })
