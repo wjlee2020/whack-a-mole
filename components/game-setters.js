@@ -28,6 +28,7 @@ export const resetGame = () => {
 const countDownPersistence = seconds => {
     seconds = localStorage.getItem('seconds') || seconds;
     function tick() {
+        // this if statement will pause the game when game reloads (since the timer state will be back to its initial of false). can delete if not necessary to pause
         if (store.getState().time.timer === true) {
             seconds--;
             localStorage.setItem('seconds', seconds);
