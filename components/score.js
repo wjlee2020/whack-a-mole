@@ -2,10 +2,12 @@ import store from "../redux/index.js";
 import { addScore } from "../redux/score.js";
 import { resetScore } from "../redux/score.js";
 import { reloadScore } from "../redux/score.js";
+import { setTimer } from "../redux/timer.js";
 
 const userScore = document.getElementById('user-score');
 const holes = document.querySelectorAll('.hole');
-let timer = false;
+
+let timer = store.getState().time.timer;
 // come back here to set timer as global variable via redux
 
 export const getPointsPerMole = () => {

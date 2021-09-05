@@ -2,6 +2,7 @@ import store from "./redux/index.js";
 import { addScore } from "./redux/score.js";
 import { resetScore } from "./redux/score.js";
 import { reloadScore } from "./redux/score.js";
+import { reloadTimer, setTimer } from "./redux/timer.js";
 // import scoreComponent from "./components/score.js";
 
 const boardTime = document.getElementById('game-time');
@@ -9,7 +10,7 @@ const userScore = document.getElementById('user-score');
 const holes = document.querySelectorAll('.hole');
 const startStopBtn = document.getElementById('start-btn');
 
-let timer = false;
+let timer = store.getState().timer;
 let moleMovementTime;
 let numOfMoles = 5;
 
@@ -33,7 +34,7 @@ checkCurrentUserScore();
 const getPointsPerMole = () => {
     holes.forEach(hole => {
         hole.addEventListener('click', () => {
-            if (hole.classList.contains('mole') && timer) {
+            if (hole.classList.contains('mole') && store.getState().time.timer) {
                 store.dispatch(addScore(1));
                 let stateScore = store.getState().score;
                 userScore.textContent = stateScore
@@ -47,7 +48,7 @@ const getPointsPerMole = () => {
 // move moles to random holes, num of moles based on Math.random with countFlg
 const randomMoleHole = () => {
     moleTime = Math.ceil(Math.random() * 3) * 1000;
-    if (timer === false) {
+    if (store.getState().time.timer === false) {
         clearTimeout(moleMovementTime)
 
     } else {
@@ -74,9 +75,10 @@ const randomMoleHole = () => {
 
 // reset all variables related to game;
 const resetGame = () => {
-    alert(`Game Over! Your score is ${localStorage.getItem('currentScore')}`)
+    alert(`Game Over! Your score is ${localStorage.getItem('currentScore') || 0}`)
     // decide to keep high scores or not (this case, clear storage, no high scores)
-    timer = false;
+    // timer = false;
+    timer = store.dispatch(setTimer())
     localStorage.clear();
     store.dispatch(resetScore());
     let stateScore = store.getState().score;
@@ -108,7 +110,7 @@ const resetGame = () => {
 const countDownPersistence = seconds => {
     seconds = localStorage.getItem('seconds') || seconds;
     function tick() {
-        if (timer) {
+        if (store.getState().time.timer === true) {
             seconds--;
             localStorage.setItem('seconds', seconds);
             boardTime.textContent = seconds;
@@ -127,14 +129,12 @@ const countDownPersistence = seconds => {
 window.onload = function () {
     startStopBtn.innerText = 'Start';
     store.dispatch(reloadScore());
-    console.log(store.getState().score || 0)
+    store.dispatch(reloadTimer());
     // countDownPersistence(playClock);
     // moleGameStart();
-    playClock = localStorage.getItem('playClock') || 'resume';
-    if (isNaN(playClock)) {
-        playClock = 10;
-    }
-    boardTime.textContent = playClock;
+    // playClock = localStorage.getItem('playClock') || 10;
+    boardTime.textContent = store.getState().timer;
+
     if (playClock === 0) {
         resetGame();
     }
@@ -142,14 +142,17 @@ window.onload = function () {
 
 // game starter (plus pause)
 const moleGameStart = () => {
-    if (timer === false) {
+    if (store.getState().time.timer === false) {
         startStopBtn.innerText = 'Stop';
-        timer = true;
+        // timer = true;
+        timer = store.dispatch(setTimer())
+
         moleMovementTime = setTimeout(randomMoleHole, moleTime);
         // gameTime = setInterval(countDownGameClock, 1000);
         countDownPersistence(playClock);
     } else {
-        timer = false;
+        // timer = false;
+        timer = store.dispatch(setTimer())
         // clearInterval(gameTime);
         startStopBtn.innerText = 'Start'
     }
