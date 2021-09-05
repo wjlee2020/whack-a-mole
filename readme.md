@@ -42,3 +42,9 @@ When the Start button is clicked, the timer flag will change to true, run two ma
 - randomMoleHole to move the moles per setTimeOut. randomMoleHole will call the setTimeout(randomMoleHole) again with a different time argument to randomly change the interval of moving moles
 - countdownPersistence to count down the game clock (and save it into the localStorage). I also let the game pause if the user accidentally refreshes the game since it would be inconvenient for the game to continue running for the split second during the reload.
 - change timer flag as true to enable the user to click on each mole for points.
+
+### Things to consider
+
+- High score: Keeping user scores only when it is higher than the previous
+- Reset button: resetting data before game finishes
+- Refactor in order to removeEventListener(s) before game starts and when the game ends.
