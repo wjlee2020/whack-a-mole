@@ -3,7 +3,7 @@ import { getPointsPerMole } from "./score.js";
 const holes = document.querySelectorAll('.hole');
 
 let moleMovementTime;
-let moleTime = 1000;
+let moleTime = store.getState().time.moleTime
 let numOfMoles = 5;
 let countFlg = 0;
 
