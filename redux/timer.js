@@ -21,7 +21,7 @@ export default function timerReducer(state = initState, action) {
             let changedTimer = !state.timer;
             return { ...state, timer: changedTimer }
         case "RELOAD_TIMER":
-            let dbTimer = localStorage.getItem('playClock') || 10
+            let dbTimer = localStorage.getItem('playClock')
             return { ...state, playClock: dbTimer };
         default:
             return state;
