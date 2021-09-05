@@ -16,9 +16,10 @@ I don't have a mature experience with Redux, and so I thought I tried to take my
 Although it may have a lot of boilerplate code, I think Redux does a great job separating state logic from other business processes. <br/>
 Here, the provided scoreReducer and the score state inside the rootReducer is where the action takes place. <br/>
 I dispatch the actions (which are basic functions that return an object with a type key), where they need to be. <br/>
-In this case, where I want to add to the score, I dispatched the addScore function that takes a payload of 1. <br/>
+In the case for scoring, I dispatched the addScore function that takes a payload of 1. <br/>
 On reload, I also created an action to retrieve saved score data in the localStorage. <br/>
 This action returns the original state of score (0) + whatever was stored inside localStorage (after parseInt). <br/>
+I also have a timer reducer which manages an object that contains three states: timer (bool), playClock, and the mole movement time (interval time).
 How redux works is: <br/>
 
 - dispatch sends an action via the store
