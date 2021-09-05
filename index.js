@@ -4,7 +4,6 @@ import { reloadScore } from "./redux/score.js";
 import { reloadTimer } from "./redux/timer.js";
 import { getPointsPerMole } from "./components/score.js";
 import { checkCurrentUserScore } from "./components/score.js";
-import { randomMoleHole } from "./components/moles.js";
 import { resetGame } from "./components/game-setters.js";
 import { moleGameStart } from "./components/game-setters.js";
 
@@ -13,12 +12,10 @@ const startStopBtn = document.getElementById('start-btn');
 let playClock = store.getState().time.playClock;
 
 
-// for creating high scores (potential new feature, if wanted in the future)
+// for creating high scores (potential new feature, if wanted in the future. currently all localStorage gets deleted)
 checkCurrentUserScore();
 // get your points per each mole clicked
 getPointsPerMole()
-// move moles to random holes, num of moles based on Math.random with countFlg
-randomMoleHole();
 
 // on window refresh
 window.onload = function () {

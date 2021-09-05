@@ -1,64 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/stylesheet.css" />
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+    <title>Whac-a-Mole</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles/stylesheet.css" />
-  <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
-  <title>Whac-a-Mole</title>
-</head>
+  <body>
+    <div class="main-container">
+      <div class="game-info-container">
+        <div class="game-box">
+          <h2>Your score:</h2>
+          <h2 id="user-score">0</h2>
+        </div>
+        <div class="game-box">
+          <h2>Time Left:</h2>
+          <h2 id="game-time">0</h2>
+        </div>
+      </div>
 
-<body>
-  <div class="main-container">
-    <div class="game-info-container">
-      <div class="game-box">
-        <h2>Your score:</h2>
-        <h2 id="user-score">0</h2>
+      <div class="grid">
+        <div class="hole" id="1"></div>
+        <div class="hole" id="2"></div>
+        <div class="hole" id="3"></div>
+        <div class="hole" id="4"></div>
+        <div class="hole" id="5"></div>
+        <div class="hole" id="6"></div>
+        <div class="hole" id="7"></div>
+        <div class="hole" id="8"></div>
+        <div class="hole" id="9"></div>
+        <div class="hole" id="10"></div>
+        <div class="hole" id="11"></div>
+        <div class="hole" id="12"></div>
+        <div class="hole" id="13"></div>
+        <div class="hole" id="14"></div>
+        <div class="hole" id="15"></div>
+        <div class="hole" id="16"></div>
+        <div class="hole" id="17"></div>
+        <div class="hole" id="18"></div>
+        <div class="hole" id="19"></div>
+        <div class="hole" id="20"></div>
+        <div class="hole" id="21"></div>
+        <div class="hole" id="22"></div>
+        <div class="hole" id="23"></div>
+        <div class="hole" id="24"></div>
       </div>
-      <div class="game-box">
-        <h2>Time Left:</h2>
-        <h2 id="game-time">0</h2>
-      </div>
+
+      <button id="start-btn">Start</button>
     </div>
 
-    <div class="grid">
-      <div class="hole" id="1"></div>
-      <div class="hole" id="2"></div>
-      <div class="hole" id="3"></div>
-      <div class="hole" id="4"></div>
-      <div class="hole" id="5"></div>
-      <div class="hole" id="6"></div>
-      <div class="hole" id="7"></div>
-      <div class="hole" id="8"></div>
-      <div class="hole" id="9"></div>
-      <div class="hole" id="10"></div>
-      <div class="hole" id="11"></div>
-      <div class="hole" id="12"></div>
-      <div class="hole" id="13"></div>
-      <div class="hole" id="14"></div>
-      <div class="hole" id="15"></div>
-      <div class="hole" id="16"></div>
-      <div class="hole" id="17"></div>
-      <div class="hole" id="18"></div>
-      <div class="hole" id="19"></div>
-      <div class="hole" id="20"></div>
-      <div class="hole" id="21"></div>
-      <div class="hole" id="22"></div>
-      <div class="hole" id="23"></div>
-      <div class="hole" id="24"></div>
-    </div>
-
-    <button id="start-btn">Start</button>
-  </div>
-
-  <script type="module" src="index.js"></script>
-  <script type="module" src="redux/index.js"></script>
-  <script type="module" src="/components/score.js"></script>
-  <script type="module" src="/components/moles.js"></script>
-  <script type="module" src="/components/game-setters.js"></script>
-
-</body>
-
+    <script type="module" src="index.js"></script>
+    <script type="module" src="redux/index.js"></script>
+    <script type="module" src="/components/score.js"></script>
+    <script type="module" src="/components/moles.js"></script>
+    <script type="module" src="/components/game-setters.js"></script>
+  </body>
 </html>

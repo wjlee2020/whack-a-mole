@@ -2,6 +2,10 @@
 
 There were many things that I think I learned and were able to understand deeper having built this small game. <br/>
 
+## Run it with a server (no npm)
+
+I ran it with VS Code Live Server
+
 ## JavaScript
 
 I decided not to go with any frameworks with this because (in my opinion) I believe there are many things you can do with

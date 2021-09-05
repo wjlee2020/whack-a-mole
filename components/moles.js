@@ -2,31 +2,30 @@ import store from "../redux/index.js"
 import { getPointsPerMole } from "./score.js";
 const holes = document.querySelectorAll('.hole');
 
-let moleMovementTime;
+
 let moleTime = store.getState().time.moleTime
 let numOfMoles = 5;
-let countFlg = 0;
+let countFlag = 0;
+let moleMovementTimeoutId;
 
 export const randomMoleHole = () => {
     moleTime = Math.ceil(Math.random() * 3) * 1000;
     if (store.getState().time.timer === false) {
-        clearTimeout(moleMovementTime)
+        clearTimeout(moleMovementTimeoutId);
     } else {
-        setTimeout(randomMoleHole, moleTime)
+        moleMovementTimeoutId = setTimeout(randomMoleHole, moleTime)
         holes.forEach(hole => {
-            getPointsPerMole();
+
             if (hole.classList.contains('mole')) {
                 hole.classList.remove('mole');
             }
         })
-        while (countFlg < numOfMoles) {
-            if (countFlg === numOfMoles) {
-                numOfMoles = Math.ceil(Math.random() * 5)
-            }
+        numOfMoles = Math.ceil(Math.random() * 5)
+        while (countFlag < numOfMoles) {
             let randHole = holes[Math.floor(Math.random() * 24)];
             randHole.classList.add('mole')
-            countFlg++;
+            countFlag++;
         }
-        countFlg = 0;
+        countFlag = 0;
     }
 }

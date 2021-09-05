@@ -2,6 +2,7 @@ import store from '../redux/index.js';
 import { setDefault, setTimer } from '../redux/timer.js';
 import { resetScore } from '../redux/score.js';
 import { randomMoleHole } from './moles.js';
+import { getPointsPerMole } from './score.js';
 
 const userScore = document.getElementById('user-score');
 const startStopBtn = document.getElementById('start-btn');
@@ -9,7 +10,7 @@ const boardTime = document.getElementById('game-time');
 
 let timer = store.getState().time.timer;
 let moleTime = store.getState().time.moleTime;
-let moleMovementTime;
+let moleMovementTimeoutId;
 let playClock = store.getState().time.playClock;
 
 export const resetGame = () => {
@@ -44,17 +45,16 @@ const countDownPersistence = seconds => {
 }
 
 export const moleGameStart = () => {
+    // store.getState().time.timer is a bool to denote the game started or not
     if (store.getState().time.timer === false) {
+
         startStopBtn.innerText = 'Stop';
-        // timer = true;
         timer = store.dispatch(setTimer())
-        moleMovementTime = setTimeout(randomMoleHole, moleTime);
-        // gameTime = setInterval(countDownGameClock, 1000);
+        moleMovementTimeoutId = setTimeout(randomMoleHole, moleTime);
         countDownPersistence(playClock);
     } else {
-        // timer = false;
         timer = store.dispatch(setTimer())
-        // clearInterval(gameTime);
-        startStopBtn.innerText = 'Start'
+        clearTimeout(moleMovementTimeoutId);
+        startStopBtn.innerText = 'Start';
     }
 }
