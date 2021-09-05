@@ -31,14 +31,6 @@
   grid-template-columns: repeat(6, 55px);
 }
 
-.hole {
-  height: 50px;
-  width: 50px;
-  background-image: url("../images/dirt.png");
-  background-position: bottom;
-  background-size: cover;
-}
-
 .grid div:nth-child(1),
 .grid div:nth-child(23) {
   grid-column: 3;
@@ -49,6 +41,14 @@
 }
 .grid div:nth-child(7) {
   grid-column: 1;
+}
+
+.hole {
+  height: 50px;
+  width: 50px;
+  background-image: url("../images/dirt.png");
+  background-position: bottom;
+  background-size: cover;
 }
 
 .mole {
