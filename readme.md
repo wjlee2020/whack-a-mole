@@ -1,6 +1,6 @@
 # Whack - a - Mole Project
 
-There were many things that I think I learned and were able to understand deeper having built this small game. <br/>
+Originally for a quick coding test. <br/>
 
 ## Run it with a server (no npm)
 
